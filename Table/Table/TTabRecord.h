@@ -6,7 +6,7 @@
 #include <string.h>
 #include <cstring>
 #include <string>
-
+#include "TArrayTable.h"
 #include <Windows.h>
 #include "TDateValue.h"
 
@@ -26,7 +26,7 @@ public: // методы
 	void SetValuePtr(PTDatValue p);// установить указатель на данные
 	PTDatValue GetValuePTR(void); // получить указатель на данные
 	virtual TDatValue * GetCopy(); // изготовить копию
-	TTabRecord & operator = (TTabRecord &tr);// присваивание
+	TTabRecord & operator = (const TTabRecord &tr);// присваивание
 	virtual int operator == (const TTabRecord &tr); // сравнение =
 	virtual int operator < (const TTabRecord &tr); // сравнение «<»
 	virtual int operator > (const TTabRecord &tr); // сравнение «>»

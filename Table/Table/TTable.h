@@ -28,9 +28,10 @@ public:
 	//virtual string GetKey(void) const = 0;
 	//virtual PTDatValue GetValuePTR(void) const = 0;
 	// основные методы
-	virtual PTDatValue FindRecord(string k) = 0; // найти запись
+	//virtual PTDatValue FindRecord(string k) = 0; // найти запись
+	virtual bool Find(TKey key) = 0;
 	virtual void InsRecord(TRecord rec) = 0; // вставить
-	virtual void DelRecord(string k) = 0; // удалить запись
+	virtual void DelRecord(TKey key) = 0; // удалить запись
 	// навигация
 	virtual int Reset(void) = 0; // установить на первую запись
 	virtual int IsTabEnded(void) const = 0; // таблица завершена?
@@ -51,13 +52,8 @@ public:
 		string str = "";
 		ifstream TxtFile(pFileName);
 
-		if (!TxtFile.fail())
-		{
-			while (!TxtFile.eof()) str += TxtFile.get();
-			TxtFile.close();
-		}
-		else cout << "File does not exist" << endl;
-
+		//от 65 до 90 коды буквенных клавиш
+		//32 - пробел
 		for (int i = 0; i < str.length(); i++)
 		{
 			char tmp = str[i];
