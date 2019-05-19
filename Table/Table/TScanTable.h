@@ -21,8 +21,6 @@ public:
 		if (IsFull()) return;
 		if (!Find(rec.key)) {
 			mas[CurrPos] = rec;
-			//mas[Curr].key = rec.key;
-			//mas[Curr].val = rec.val;
 			DataCount++;
 			Efficiency++;
 		}
