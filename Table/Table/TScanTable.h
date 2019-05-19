@@ -4,7 +4,39 @@ class TScanTable : public TArrayTable {
 public:
 	TScanTable(int Size = TabMaxSize) : TArrayTable(Size) {};//конструктор
 	// основные методы
-	virtual PTDatValue FindRecord(string k);//найти запись
-	virtual void InsRecord(string k, PTDatValue pVal);//вставить
-	virtual void DelRecord(string k);//удалить запись
+
+	virtual bool Find(TKey _key) {
+		for (int i = 0; i < DataCount; i++) {
+			Efficiency++;
+			if (mas[i].key == _key) {
+				CurrPos = i;
+				return true;
+			}
+		}
+		CurrPos = DataCount;
+		return false;
+	}
+
+	virtual void Insert(TRecord rec) {
+		if (IsFull()) return;
+		if (!Find(rec.key)) {
+			mas[CurrPos] = rec;
+			//mas[Curr].key = rec.key;
+			//mas[Curr].val = rec.val;
+			DataCount++;
+			Efficiency++;
+		}
+		else
+		{
+			mas[CurrPos].val++;
+		}
+	}
+	
+	virtual void Delete(TKey _key) {
+		if (Find(_key)) {
+			DataCount--;
+			Efficiency++;
+			mas[CurrPos] = mas[DataCount];
+		}
+	}
 };

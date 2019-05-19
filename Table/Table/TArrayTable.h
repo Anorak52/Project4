@@ -15,7 +15,7 @@ public:
 	{
 		TabSize = Size;
 		CurrPos = -1;
-		mas = new TRecord[TabSize];
+		mas = new PTTabRecord[TabSize];
 	} // конструктор
 	~TArrayTable() {}; // деструктор
 	// информационные методы
@@ -38,6 +38,7 @@ public:
 	//(=1 после применения для последней записи таблицы)
 	virtual int SetCurrentPos(int pos);// установить текущую запись
 	int GetCurrentPos(void) const; //получить номер текущей записи
+
 	friend class TSortTable;
 	friend class TTabRecord;
 };
