@@ -1,15 +1,22 @@
 #define TabMaxSize 25
 #include <string>
 #include "TDateValue.h"
+#include "TTable.h"
+
 using namespace std;
 enum TDataPos { FIRST_POS, CURRENT_POS, LAST_POS };
 class TArrayTable : public TTable {
 protected:
-	PTTabRecord *pRecs; // память для записей таблицы
+	PTTabRecord *mas; // память для записей таблицы
 	int TabSize; // макс. возм.количество записей в таблице
 	int CurrPos; // номер текущей записи (нумерация с 0)
 public:
-	TArrayTable(int Size = TabMaxSize); // конструктор
+	TArrayTable(int Size = TabMaxSize)
+	{
+		TabSize = _TabSize;
+		CurrPos = -1;
+		mas = new TRecord[MaxSize];
+	} // конструктор
 	~TArrayTable() {}; // деструктор
 	// информационные методы
 	
