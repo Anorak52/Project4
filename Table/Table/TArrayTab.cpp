@@ -1,4 +1,4 @@
-#include "TArraytab.h"
+#include "TArrayTable.h"
 
 TKey TArrayTable::GetKey(TDataPos mode) const
 {
@@ -12,7 +12,7 @@ TKey TArrayTable::GetKey(TDataPos mode) const
 		default: pos = CurrPos; break;
 		}
 	}
-	return (pos == -1) ? string("") : pRecs[pos]->Key;
+	return (pos == -1) ? string("") : mas[pos]->Key;
 }
 TDatValue TArrayTable::GetValuePTR(TDataPos mode) const
 {
@@ -26,7 +26,7 @@ TDatValue TArrayTable::GetValuePTR(TDataPos mode) const
 		default: pos = CurrPos; break;
 		}
 	}
-	return (pos == -1) ? NULL : pRecs[pos]->pValue;
+	return (pos == -1) ? NULL : mas[pos]->pValue;
 }
 int TArrayTable::Reset(void)
 {

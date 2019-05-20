@@ -7,26 +7,26 @@ using namespace std;
 enum TDataPos { FIRST_POS, CURRENT_POS, LAST_POS };
 class TArrayTable : public TTable {
 protected:
-	PTTabRecord *mas; // память для записей таблицы
+	PTTabRecord * mas;// память для записей таблицы
 	int TabSize; // макс. возм.количество записей в таблице
 	int CurrPos; // номер текущей записи (нумерация с 0)
 public:
-	TArrayTable(int Size = TabMaxSize)
+	TArrayTable(int Size = TabMaxSize) // конструктор
 	{
-		TabSize = Size;
-		CurrPos = -1;
-		mas = new PTTabRecord[TabSize];
-	} // конструктор
+		mas = new PTTabRecord[Size];
+		for (int i = 0; i < Size; i++) mas[i] = NULL;
+		TabSize = Size; DataCount = CurrPos = 0;
+	}
 	~TArrayTable() {}; // деструктор
 	// информационные методы
 	
 		virtual int IsFull() const; // заполнена?
 	int GetTabSize() const; // к-во записей
 	// доступ
-	virtual string GetKey(void) const;
-	virtual PTDatValue GetValuePTR(void) const;
-	virtual string GetKey(TDataPos mode) const;
-	virtual PTDatValue GetValuePTR(TDataPos mode) const;
+	virtual TKey GetKey(void) const { return GetKey(CURRENT_POS); }
+	virtual PTDatValue GetValuePTR(void) const { return GetValuePTR(CURRENT_POS); }
+	virtual TKey GetKey(TDataPos mode) const;
+	virtual PTDatValue GetValuePTR(TDataPos mode) const; // указатель на значение
 	// основные методы
 	virtual PTDatValue FindRecord(string k) = 0; // найти запись
 	virtual void InsRecord(string k, PTDatValue pVal) = 0; // вставить
