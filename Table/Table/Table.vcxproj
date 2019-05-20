@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TArrayTab.cpp" />
     <ClCompile Include="TSortTable.cpp" />
     <ClCompile Include="TTabRecord.cpp" />
   </ItemGroup>

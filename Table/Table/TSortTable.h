@@ -23,4 +23,4 @@ public:
 	virtual PTDatValue FindRecord(string k); // найти запись
 		virtual void InsRecord(string k, PTDatValue pVal); // вставить
 	virtual void DelRecord(string k); // удалить запись
-};
+};
